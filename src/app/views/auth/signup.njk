@@ -1,0 +1,24 @@
+{% extends "_layouts/auth.njk" %}
+
+{% block body %}
+    <form action="/signup" method="post">
+        {% include "_partials/flash.njk" %}
+
+        <label for="avatar">
+            <img src="/images/avatar.svg" height="24" />
+        </label>
+
+        <input name="name" type="text" placeholder="Nome completo" required/>
+        <input name="cpf" type="text" placeholder="CPF" required/>
+        <input name="endereco" type="text" placeholder="Endereço" required/>
+        <input name="cidade" type="text" placeholder="Cidade" required/>
+        <input name="estado" type="text" placeholder="Estado" required/>
+        <input name="telefone" type="text" placeholder="Telefone" required/>
+        <input name="email" type="email" placeholder="Seu e-mail" required/>
+        <input name="password" type="password" placeholder="Senha secreta" required/>
+
+        <button type="submit">Criar conta</button>
+
+        <a href="/">Já possuo conta</a>
+    </form>
+{% endblock %}
