@@ -11,7 +11,7 @@ class PetController {
 
         const { id } = req.session.user
 
-        await Pet.create({ ...req.body, avatar, user_id: id })
+        await Pet.create({ ...req.body, avatar, user_id: id, status: 0 })
         req.flash('success', 'Animal inserido com sucesso!');
         return res.redirect('/app/dashboard');
     }
