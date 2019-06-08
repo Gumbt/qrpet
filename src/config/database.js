@@ -1,9 +1,9 @@
 module.exports = {
     dialect: 'mysql',
-    host: 'localhost',
-    username: 'root',
-    password: '',
-    database: 'qrpet',
+    host: 'remotemysql.com',
+    username: 'HUOZkccRHu',
+    password: 'Cf8iFxURmi',
+    database: 'HUOZkccRHu',
     operatorAliase: false,
     define: {
         timestamps: true, //data de criação
