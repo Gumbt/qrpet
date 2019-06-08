@@ -3,16 +3,20 @@
 {% block body %}
     <div class="content">
         <strong>Olá, {{ user.name }}</strong>
-        <p>Inicie um agendamento escolhendo um profissional abaixo:</p>
-
-        <ul class="providers">
-            {% for provider in providers %}
-                <li class="provider">
+        <a href="/app/pet/new" class="adcanimal">Adicionar animal</a>
+        {% include "_partials/flash.njk" %}
+        <p>Seus animais cadastrados:</p>
+        <ul class="pets">
+            {% for pet in pets %}
+                <li class="pet {% if(pet.status) %}desaparecido{% endif %}">
                     <div>
-                        <img src="/files/{{ provider.avatar }}" />
-                        <strong>{{provider.name}}</strong>
+                        <img src="/files/{{ pet.avatar }}" />
+                        <strong>{{pet.name}}</strong>
                     </div>
-                    <a href="/app/appointments/new/{{provider.id}}">+</a>
+                    <div>
+                        <a href="/app/pet/edit/{{pet.id}}"><i class="fas fa-edit"></i></a>
+                        <a href="/pet/profile/{{pet.id}}"><i class="fas fa-paw"></i></a>
+                    </div>
                 </li>
             {% endfor %}
         </ul>

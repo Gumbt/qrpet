@@ -1,0 +1,30 @@
+{% extends "_layouts/auth.njk" %}
+
+{% block body %}
+    <form action="/app/pet/edit/{{pet.id}}" method="post">
+
+        <label for="avatar">
+            <img src="/files/{{ pet.avatar }}" height="80"/>
+        </label>
+        {% include "_partials/flash.njk" %}
+        <div class="alert alert-danger hidden" id="msg">Selecione uma imagem</div>
+        <label class="desapa" for="status">
+            <input id="status" name="status" value="check" {% if(pet.status) %}checked{% endif %} type="checkbox" > Marcar como desaparecido
+        </label>
+        <input name="name" type="text" placeholder="Nome do animal" value="{{pet.name}}" required/>
+        <input name="raca" type="text" placeholder="Raça" value="{{pet.raca}}" required/>
+        <input name="peso" type="text" placeholder="Peso" value="{{pet.peso}}" required/>
+        <input name="cor" type="text" placeholder="Cor" value="{{pet.cor}}" required/>
+        <label for="data_nasc" style="color:gray">
+        Data de nascimento
+        <input name="data_nasc" type="date" placeholder="Data de nascimento" value="{{pet.data_nasc}}" required/>
+        </label>
+        <textarea name="descricao" type="email" placeholder="Descrição" required/>{{pet.descricao}}</textarea>
+        <a href="{{qr}}" download="QRPetCode" class="baixar">Baixar QRcode</a>
+        <button type="submit">Salvar alterações</button>
+        <a href="/app/pet/delete/{{pet.id}}" class="excluir">Excluir animal</a>
+
+        <a href="/app/dashboard">Voltar</a>
+    </form>
+
+{% endblock %}

@@ -1,16 +1,17 @@
 const {
-    User
+    User, Pet
 } = require('../models')
 
 class DashboardController {
     async index(req, res) {
-        const providers = await User.findAll({
+        const { id } = req.session.user
+        const pets = await Pet.findAll({
             where: {
-                provider: true
+                user_id: id
             }
         })
         return res.render('dashboard', {
-            providers
+            pets
         });
     }
 }

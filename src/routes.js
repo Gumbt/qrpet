@@ -1,6 +1,6 @@
 const express = require('express');
-//const multerConfig = require('./config/multer');
-//const upload = require('multer')(multerConfig);
+const multerConfig = require('./config/multer');
+const upload = require('multer')(multerConfig);
 
 const routes = express.Router();
 
@@ -15,6 +15,7 @@ routes.use((req, res, next) => {
 
     return next();
 });
+routes.get('/files/:file', controllers.FileController.show)
 
 routes.get('/', guestMiddlewares, controllers.SessionController.create);
 routes.post('/signin', controllers.SessionController.store);
@@ -22,15 +23,18 @@ routes.post('/signin', controllers.SessionController.store);
 routes.get('/signup', guestMiddlewares, controllers.UserController.create);
 routes.post('/signup', controllers.UserController.store);
 
+routes.get('/pet/profile/:id', controllers.PetController.profile);
 routes.use('/app', authMiddlewares);
 
 routes.get('/app/logout', controllers.SessionController.destroy);
 
 routes.get('/app/dashboard', controllers.DashboardController.index);
 
-//routes.get('/app/appointments/new/:provider', controllers.AppointmentController.create);
-//routes.post('/app/appointments/new/:provider', controllers.AppointmentController.store);
-
+routes.get('/app/pet/new', controllers.PetController.create);
+routes.post('/app/pet/new', upload.single('avatar'), controllers.PetController.store);
+routes.get('/app/pet/edit/:id', controllers.PetController.edit);
+routes.post('/app/pet/edit/:id', controllers.PetController.update);
+routes.get('/app/pet/delete/:id', controllers.PetController.destroy);
 //routes.get('/app/available/:provider', controllers.AvailableController.index);
 
 module.exports = routes;

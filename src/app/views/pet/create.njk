@@ -1,0 +1,40 @@
+{% extends "_layouts/auth.njk" %}
+
+{% block body %}
+    <form action="/app/pet/new" method="post" enctype="multipart/form-data">
+
+        <label for="avatar">
+            <img src="/images/avatar.png" height="80"/>
+        </label>
+        <input id="avatar" name="avatar" type="file" required/>
+        {% include "_partials/flash.njk" %}
+        <div class="alert alert-danger hidden" id="msg">Selecione uma imagem</div>
+        <input name="name" type="text" placeholder="Nome do animal" required/>
+        <input name="raca" type="text" placeholder="Raça" required/>
+        <input name="peso" type="text" placeholder="Peso" required/>
+        <input name="cor" type="text" placeholder="Cor" required/>
+        <label for="data_nasc" style="color:gray">
+        Data de nascimento
+        <input name="data_nasc" type="date" placeholder="Data de nascimento" required/>
+        </label>
+        <textarea name="descricao" type="email" placeholder="Descrição" required/></textarea>
+
+        <button type="submit" onclick="veriFile()">Adicionar animal</button>
+
+        <a href="/app/dashboard">Voltar</a>
+    </form>
+    <script type="text/javascript">
+        var avatarInput = document.getElementById('avatar');
+        var img = document.querySelector('label[for=avatar] img');
+        avatarInput.onchange = function(e) {
+            img.classList.add('preview');
+            img.src = URL.createObjectURL(e.target.files[0]);
+        }
+        function veriFile(){
+            var file = document.getElementById('avatar');
+            if (file.files.length === 0) {
+                document.getElementById('msg').classList.remove("hidden");
+            }
+        }
+    </script>
+{% endblock %}

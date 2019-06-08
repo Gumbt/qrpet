@@ -9,18 +9,19 @@ class UserController {
     }
     async store(req, res) {
         const {
-            email
-        } = req.body
-
-        if (await User.findOne({
-            email
-        })) {
-            return res.status(400).json({
-                error: 'User alread exists'
-            })
+            email,
+        } = req.body;
+        const user = await User.findOne({
+            where: {
+                email
+            }
+        });
+        if (user) {
+            req.flash('error', 'Email já existe no banco de dados');
+            return res.redirect('/signup');
         }
 
-        const user = await User.create(req.body)
+        await User.create(req.body)
         return res.redirect('/');
     }
 }

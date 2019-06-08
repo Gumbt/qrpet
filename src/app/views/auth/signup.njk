@@ -2,11 +2,11 @@
 
 {% block body %}
     <form action="/signup" method="post">
-        {% include "_partials/flash.njk" %}
 
         <label for="avatar">
             <img src="/images/avatar.svg" height="24" />
         </label>
+        {% include "_partials/flash.njk" %}
 
         <input name="name" type="text" placeholder="Nome completo" required/>
         <input name="cpf" type="text" placeholder="CPF" required/>
