@@ -30,7 +30,7 @@ class PetController {
     }
     async sendmail(req, res) {
         const pet = await Pet.findByPk(req.params.id);
-        const user = await User.findByPk(pet.id)
+        const user = await User.findByPk(pet.user_id)
 
         const transport = nodemailer.createTransport(mailConfig)
 
