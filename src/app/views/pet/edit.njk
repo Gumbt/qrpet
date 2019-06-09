@@ -4,7 +4,7 @@
     <form action="/app/pet/edit/{{pet.id}}" method="post">
 
         <label for="avatar">
-            <img src="/files/{{ pet.avatar }}" height="80"/>
+            <img src="/files/{{ pet.avatar }}" height="120"/>
         </label>
         {% include "_partials/flash.njk" %}
         <div class="alert alert-danger hidden" id="msg">Selecione uma imagem</div>
@@ -17,10 +17,16 @@
         <input name="cor" type="text" placeholder="Cor" value="{{pet.cor}}" required/>
         <label for="data_nasc" style="color:gray">
         Data de nascimento
-        <input name="data_nasc" class="datens" type="date" placeholder="Data de nascimento" value="{{pet.data_nasc}}" required/>
+            <input name="data_nasc" class="datens" type="date" placeholder="Data de nascimento" value="{{pet.data_nasc}}" required/>
         </label>
-        <textarea name="descricao" placeholder="Descrição" required/>{{pet.descricao}}</textarea>
-        <textarea name="vacinas" placeholder="Vacinas" required/>{{pet.vacinas}}</textarea>
+        <label for="data_nasc" style="color:gray">
+        Descrição
+            <textarea style="width:100%" name="descricao" placeholder="Descrição" required/>{{pet.descricao}}</textarea>
+        </label>
+        <label for="data_nasc" style="color:gray">
+        Vacinas
+            <textarea style="width:100%" name="vacinas" placeholder="Vacinas" required/>{{pet.vacinas}}</textarea>
+        </label>
         <a href="{{qr}}" download="QRPetCode" class="baixar">Baixar QRcode</a>
         <button type="submit">Salvar alterações</button>
         <a href="/app/pet/delete/{{pet.id}}" class="excluir">Excluir animal</a>

@@ -29,7 +29,8 @@ body {
     height: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
+    margin-top:5px;
 }
 
 .main-wrapper {
@@ -49,6 +50,7 @@ body {
     border-radius: 4px;
     padding: 30px 20px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    margin-bottom: 5px;
 }
 
 .auth-wrapper form>img {
@@ -209,7 +211,7 @@ ul.pets {
     padding: 20px;
     border: 1px solid #ddd;
     border-radius: 4px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     display: flex;
     align-items: center;
     justify-content: space-between;
