@@ -24,6 +24,8 @@ routes.get('/signup', guestMiddlewares, controllers.UserController.create);
 routes.post('/signup', controllers.UserController.store);
 
 routes.get('/pet/profile/:id', controllers.PetController.profile);
+routes.get('/pet/contato/:id', controllers.PetController.contact);
+routes.post('/pet/contato/:id', controllers.PetController.sendmail);
 routes.use('/app', authMiddlewares);
 
 routes.get('/app/logout', controllers.SessionController.destroy);
@@ -35,6 +37,5 @@ routes.post('/app/pet/new', upload.single('avatar'), controllers.PetController.s
 routes.get('/app/pet/edit/:id', controllers.PetController.edit);
 routes.post('/app/pet/edit/:id', controllers.PetController.update);
 routes.get('/app/pet/delete/:id', controllers.PetController.destroy);
-//routes.get('/app/available/:provider', controllers.AvailableController.index);
 
 module.exports = routes;

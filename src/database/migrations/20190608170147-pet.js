@@ -38,6 +38,10 @@ module.exports = {
             },
             descricao: {
                 allowNull: false,
+                type: Sequelize.STRING(500),
+            },
+            vacinas: {
+                allowNull: false,
                 type: Sequelize.STRING(400),
             },
             data_nasc: {

@@ -17,9 +17,10 @@
         <input name="cor" type="text" placeholder="Cor" value="{{pet.cor}}" required/>
         <label for="data_nasc" style="color:gray">
         Data de nascimento
-        <input name="data_nasc" type="date" placeholder="Data de nascimento" value="{{pet.data_nasc}}" required/>
+        <input name="data_nasc" class="datens" type="date" placeholder="Data de nascimento" value="{{pet.data_nasc}}" required/>
         </label>
-        <textarea name="descricao" type="email" placeholder="Descrição" required/>{{pet.descricao}}</textarea>
+        <textarea name="descricao" placeholder="Descrição" required/>{{pet.descricao}}</textarea>
+        <textarea name="vacinas" placeholder="Vacinas" required/>{{pet.vacinas}}</textarea>
         <a href="{{qr}}" download="QRPetCode" class="baixar">Baixar QRcode</a>
         <button type="submit">Salvar alterações</button>
         <a href="/app/pet/delete/{{pet.id}}" class="excluir">Excluir animal</a>

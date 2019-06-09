@@ -1,6 +1,9 @@
 {% extends "_layouts/default.njk" %}
 
 {% block body %}
+    <a href="/" id="inicio"><div class="headerlogo" for="inicio">
+        <img src="/images/logo.png" width="70" />
+    </div></a>
     <div class="profile">
         <div class="imgPet">
             <img src="/files/{{ pet.avatar }}" />
@@ -8,14 +11,16 @@
         {% if(pet.status) %}
             <div class="alert alert-danger">Esse animal foi dado como desaparecido</div>
         {% endif %}
+        {% include "_partials/flash.njk" %}
         <strong>Nome: {{ pet.name }}</strong>
         <span><strong>Raça:</strong> {{ pet.raca }}</span>
         <span><strong>Cor:</strong> {{ pet.cor }}</span>
         <span><strong>Peso:</strong> {{ pet.peso }}</span>
         <span><strong>Idade:</strong> {{ years }} anos</span>
         <span><strong>Descrição:</strong> {{ pet.descricao }}</span>
+        <span><strong>Vacinas:</strong> {{ pet.vacinas }}</span>
         <div class="infobutton">Encontrou esse animal?
-            <a href="">Entre em contato com os donos</a>
+            <a href="/pet/contato/{{pet.id}}">Entre em contato com os donos</a>
         </div>
     </div>
 {% endblock %}

@@ -7,6 +7,7 @@ module.exports = (sequelize, DataTypes) => {
         cor: DataTypes.STRING,
         avatar: DataTypes.STRING,
         descricao: DataTypes.STRING,
+        vacinas: DataTypes.STRING,
         data_nasc: DataTypes.DATE,
         status: DataTypes.BOOLEAN,
     });

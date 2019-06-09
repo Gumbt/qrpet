@@ -1,4 +1,6 @@
 const { User, Pet } = require('../models');
+const nodemailer = require('nodemailer')
+const mailConfig = require('../../config/mail')
 const moment = require('moment');
 const qrcode = require('qrcode');
 
@@ -20,11 +22,31 @@ class PetController {
         var years = moment().diff(pet.data_nasc, 'years');
         return res.render('pet/profile', { pet, years })
     }
+    async contact(req, res) {
+        const pet = await Pet.findByPk(req.params.id);
+        const user = await User.findByPk(pet.id)
+
+        return res.render('pet/contato', { pet, user })
+    }
+    async sendmail(req, res) {
+        const pet = await Pet.findByPk(req.params.id);
+        const user = await User.findByPk(pet.id)
+
+        const transport = nodemailer.createTransport(mailConfig)
+
+        await transport.sendMail({
+            from: `"${req.body.name}" <${req.body.email}>`,
+            to: user.email,
+            subject: `Animal encontrado: ${pet.name} id: #${pet.id}`,
+            text: req.body.texto
+        })
+        req.flash('success', 'Contato enviado com sucesso, aguarde o retorno dos donos!');
+        return res.redirect('/pet/profile/' + pet.id)
+    }
     async edit(req, res) {
         const pet = await Pet.findByPk(req.params.id);
         if (pet && pet.user_id === req.session.user.id) {
             var fullUrl = req.protocol + '://' + req.get('host') + '/pet/profile/' + pet.id;
-            console.log(fullUrl);
             const qr = await qrcode.toDataURL(fullUrl);
 
 

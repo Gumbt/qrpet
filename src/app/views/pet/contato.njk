@@ -1,0 +1,16 @@
+{% extends "_layouts/auth.njk" %}
+
+{% block body %}
+
+    <form action="/pet/contato/{{pet.id}}" method="post">
+
+        <input name="name" type="text" placeholder="Seu nome" required/>
+        <input name="email" type="text" placeholder="Email" required/>
+        <input name="text" type="text" placeholder="Telefone" required/>
+        <textarea name="texto" placeholder="Descrição" rows="6" required/>Saudações. Encontrei seu animal chamado {{pet.name}}, favor entrar em contato comigo.</textarea>
+
+        <button type="submit">Enviar mensagem</button>
+
+        <a href="/pet/profile/{{pet.id}}">Voltar</a>
+    </form>
+{% endblock %}

@@ -1,6 +1,9 @@
 {% extends "_layouts/default.njk" %}
 
 {% block body %}
+    <a href="/" id="inicio"><div class="headerlogo" for="inicio">
+        <img src="/images/logo.png" width="70" />
+    </div></a>
     <div class="content">
         <strong>Olá, {{ user.name }}</strong>
         <a href="/app/pet/new" class="adcanimal">Adicionar animal</a>
@@ -14,7 +17,7 @@
                         <strong>{{pet.name}}</strong>
                     </div>
                     <div>
-                        <a href="/app/pet/edit/{{pet.id}}"><i class="fas fa-edit"></i></a>
+                        <a href="/app/pet/edit/{{pet.id}}"><i class="far fa-edit"></i></a>
                         <a href="/pet/profile/{{pet.id}}"><i class="fas fa-paw"></i></a>
                     </div>
                 </li>
