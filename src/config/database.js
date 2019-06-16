@@ -1,9 +1,9 @@
 module.exports = {
     dialect: 'mysql',
-    host: 'sql176.main-hosting.eu',
-    username: 'u861781140_coc',
-    password: '1234567g',
-    database: 'u861781140_coc',
+    host: 'sql10.freemysqlhosting.net',
+    username: 'sql10295745',
+    password: 'VRwNbXa5dS',
+    database: 'sql10295745',
     operatorAliase: false,
     define: {
         timestamps: true, //data de criação
